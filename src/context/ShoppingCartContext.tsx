@@ -5,10 +5,14 @@ type ShoppingCartProividerProps = {
 };
 
 type ShoppingCartContext = {
+  openCart: () => void;
+  closeCart: () => void;
   getItemQuantity: (id: number) => number;
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
   removeCartForm: (id: number) => void;
+  cartQuantity: number;
+  cartItems: CartItem[];
 };
 
 type CartItem = {
@@ -23,7 +27,18 @@ export const useShoppingCart = () => {
 };
 
 export const AppContext = ({ children }: ShoppingCartProividerProps) => {
+  const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  // cartQuantity function this calculates the quantity of all the cart items
+  const cartQuantity = cartItems.reduce(
+    (quantity, item) => quantity + item.quantity,
+    0
+  );
+
+  // To open the sidebar function
+  const openCart = () => setIsOpen(true);
+  const closeCart = () => setIsOpen(false);
 
   // getItemQuantity function
   function getItemQuantity(id: number) {
@@ -82,6 +97,10 @@ export const AppContext = ({ children }: ShoppingCartProividerProps) => {
         increaseCartQuantity,
         decreaseCartQuantity,
         removeCartForm,
+        openCart,
+        closeCart,
+        cartItems,
+        cartQuantity,
       }}
     >
       {children}

@@ -38,7 +38,7 @@ const StoreItem = ({ id, name, price, imgUrl }: StoreItemProps) => {
           </div>
           <Button onClick={() => increaseCartQuantity(id)}>+</Button>
         </div>
-        <Button variant="danger" size="sm">
+        <Button variant="danger" size="sm" onClick={() => removeCartForm(id)}>
           Remove
         </Button>
       </div>
