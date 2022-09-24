@@ -16,7 +16,7 @@ const StoreItem = ({ id, name, price, imgUrl }: StoreItemProps) => {
     getItemQuantity,
     increaseCartQuantity,
     decreaseCartQuantity,
-    removeCartForm,
+    removeCartFrom,
   } = useShoppingCart();
 
   const quantity = getItemQuantity(id);
@@ -38,7 +38,7 @@ const StoreItem = ({ id, name, price, imgUrl }: StoreItemProps) => {
           </div>
           <Button onClick={() => increaseCartQuantity(id)}>+</Button>
         </div>
-        <Button variant="danger" size="sm" onClick={() => removeCartForm(id)}>
+        <Button variant="danger" size="sm" onClick={() => removeCartFrom(id)}>
           Remove
         </Button>
       </div>
