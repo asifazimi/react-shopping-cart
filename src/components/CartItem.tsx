@@ -1,7 +1,6 @@
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { items } from "../data/Items";
 import { Stack, Button } from "react-bootstrap";
-import { isFormElement } from "react-router-dom/dist/dom";
 import { formatCurrency } from "../utilities/formatCurrency";
 
 type CartItemProps = {
